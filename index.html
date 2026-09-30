@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case-Tracking - Login</title>
+  <script src="assets/js/platform.js"></script>
+  <link rel="stylesheet" href="assets/css/common.css" />
+  <link rel="stylesheet" href="assets/css/login.css" />
+</head>
+<body class="login-page">
+  <form class="login-card" id="loginForm" novalidate>
+    <div class="logo">🎉</div>
+    <h1>Case-Tracking</h1>
+    <p class="subtitle">เข้าสู่ระบบเพื่อดำเนินการต่อ</p>
+
+    <div class="field">
+      <label for="username">ชื่อผู้ใช้</label>
+      <input type="text" id="username" placeholder="กรอกชื่อผู้ใช้" autocomplete="username" />
+    </div>
+
+    <div class="field">
+      <label for="password">รหัสผ่าน</label>
+      <input type="password" id="password" placeholder="กรอกรหัสผ่าน" autocomplete="current-password" />
+    </div>
+
+    <div class="field">
+      <label for="role">เข้าใช้งานในบทบาท</label>
+      <select id="role">
+        <option value="customer">👤 ลูกค้า (ผู้ใช้งานโปรแกรม)</option>
+        <option value="support">🎧 Support</option>
+        <option value="product">🧭 Product</option>
+        <option value="dev">💻 Developer</option>
+        <option value="tester">🧪 Tester (ทดสอบ + Publish)</option>
+      </select>
+    </div>
+
+    <div class="field" id="companyField">
+      <label for="company">บริษัท (ลูกค้า)</label>
+      <select id="company"></select>
+    </div>
+
+    <div class="row">
+      <label><input type="checkbox" id="remember" /> จดจำฉัน</label>
+      <a href="#" id="forgotLink">ลืมรหัสผ่าน?</a>
+    </div>
+
+    <div class="error" id="error"></div>
+
+    <button type="submit" class="btn">เข้าสู่ระบบ</button>
+
+    <a class="spec-link" href="pages/spec.html">📖 อ่าน Spec ของระบบ (ไม่ต้อง login)</a>
+
+    <p class="hint">โหมด Demo: กรอกชื่อผู้ใช้อะไรก็ได้ แล้วเลือกบทบาท<br />ใช้ชื่อ <b>admin</b> เพื่อเข้าหน้า Admin Spec (มีสิทธิ์ทุกอย่าง)</p>
+  </form>
+
+  <script src="assets/js/cases-data.js"></script>
+  <script src="assets/js/announce.js"></script>
+  <script src="assets/js/login.js"></script>
+</body>
+</html>

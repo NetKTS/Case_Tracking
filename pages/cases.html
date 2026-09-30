@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case-Tracking - Case Tracking</title>
+  <script src="../assets/js/platform.js"></script>
+  <link rel="stylesheet" href="../assets/css/common.css" />
+  <link rel="stylesheet" href="../assets/css/cases.css" />
+</head>
+<body>
+  <header class="topbar"></header>
+
+  <main class="page">
+    <div class="page-head">
+      <div>
+        <h1>Case Tracking</h1>
+        <p class="lead" id="lead"></p>
+      </div>
+      <button class="btn primary" id="newCaseBtn">＋ แจ้งปัญหาใหม่</button>
+    </div>
+
+    <section class="kpis" id="kpis"></section>
+
+    <div class="filters">
+      <input id="q" class="input grow" placeholder="🔍 ค้นหาเลขเคส / หัวข้อ / ผู้แจ้ง" />
+      <select id="fSeverity" class="input">
+        <option value="">ทุกความรุนแรง</option>
+      </select>
+      <select id="fCompany" class="input">
+        <option value="">ทุกบริษัท</option>
+      </select>
+      <button class="chip-toggle" id="mineToggle" aria-pressed="false">⚡ รอฉันดำเนินการ</button>
+      <label class="check-inline"><input type="checkbox" id="showClosed" /> แสดงเคสที่ปิดแล้ว</label>
+      <div class="seg" id="viewSeg">
+        <button data-v="board">▦ Board</button>
+        <button data-v="list">☰ List</button>
+      </div>
+    </div>
+
+    <section id="content"></section>
+  </main>
+
+  <script src="../assets/js/cases-data.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/announce.js"></script>
+  <script src="../assets/js/notify.js"></script>
+  <script src="../assets/js/cases-ui.js"></script>
+  <script src="../assets/js/cases.js"></script>
+</body>
+</html>

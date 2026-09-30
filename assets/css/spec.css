@@ -1,0 +1,51 @@
+/* ---------- หน้า 📖 Spec (เนื้อหาจาก docs/OVERVIEW.md) ---------- */
+.eyebrow-spec { font-size: 12px; font-weight: 700; color: var(--primary); letter-spacing: 0.04em; margin-bottom: 4px; }
+.spec-page h1 { text-wrap: balance; }
+
+.spec-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 20px; align-items: start; }
+
+.spec-toc {
+  position: sticky;
+  top: 76px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.toc-title { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; padding: 0 8px 6px; }
+.spec-toc a { padding: 7px 10px; border-radius: 8px; font-size: 13px; color: var(--text); text-decoration: none; line-height: 1.4; }
+.spec-toc a:hover { background: var(--bg); }
+.spec-toc a.active { background: #eef2ff; color: var(--primary); font-weight: 600; }
+
+.spec-body { display: flex; flex-direction: column; min-width: 0; }
+.spec-card { font-size: 14.5px; line-height: 1.7; }
+.spec-card h2 { font-size: 19px; margin-bottom: 12px; text-wrap: balance; }
+.spec-card h3 { font-size: 15.5px; margin: 20px 0 8px; }
+.spec-card p { margin: 8px 0; max-width: 72ch; }
+.spec-card ul, .spec-card ol { margin: 8px 0 8px 22px; }
+.spec-card li { margin: 3px 0; }
+.spec-card li.sub { margin-left: 22px; list-style: circle; }
+.spec-card hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+.spec-card a { color: var(--primary); }
+.spec-card code { background: #f1f5f9; padding: 1px 6px; border-radius: 5px; font-family: Consolas, monospace; font-size: 12.5px; }
+.spec-card blockquote { border-left: 3px solid #c7d2fe; background: #f8f9ff; padding: 8px 14px; border-radius: 0 10px 10px 0; color: #475569; font-size: 13.5px; margin: 8px 0; }
+.spec-card pre { background: #0f172a; color: #e2e8f0; padding: 14px 16px; border-radius: 12px; overflow-x: auto; font-family: Consolas, monospace; font-size: 12.5px; line-height: 1.5; margin: 10px 0; }
+
+.md-table { overflow-x: auto; margin: 10px 0 14px; border: 1px solid var(--border); border-radius: 12px; }
+.md-table table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.md-table th { text-align: left; background: #f8f9fc; color: var(--muted); font-size: 12px; font-weight: 700; padding: 10px 12px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.md-table td { padding: 9px 12px; border-bottom: 1px solid #f1f2f6; vertical-align: top; }
+.md-table tr:last-child td { border-bottom: none; }
+.md-table tbody tr:hover td { background: #fafbff; }
+
+a.spec-login { text-decoration: none; color: var(--text); }
+
+@media (max-width: 900px) {
+  .spec-layout { grid-template-columns: 1fr; }
+  .spec-toc { position: static; flex-direction: row; flex-wrap: wrap; }
+  .toc-title { width: 100%; }
+}

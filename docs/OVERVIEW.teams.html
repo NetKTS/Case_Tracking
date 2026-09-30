@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case-Tracking: ภาพรวมระบบ · สำหรับ Teams</title>
+<style>
+  body { font-family: "Segoe UI", "Noto Sans Thai", Tahoma, sans-serif; background: #f3f2f8; color: #242424; margin: 0; padding: 24px 16px 60px; }
+  .wrap { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+  .intro { background: #fff; border-radius: 12px; padding: 16px 20px; font-size: 14px; line-height: 1.6; border: 1px solid #e0e0ea; }
+  .sec { background: #fff; border-radius: 12px; border: 1px solid #e0e0ea; overflow: hidden; }
+  .bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 16px; background: #eef0f8; font-size: 13px; }
+  .bar b { color: #464775; }
+  .bar small { color: #666; }
+  .bar small.warn { color: #b91c1c; font-weight: 600; }
+  button { border: none; background: #5b5fc7; color: #fff; border-radius: 6px; padding: 7px 14px; font: inherit; font-weight: 600; cursor: pointer; white-space: nowrap; }
+  button:hover { background: #4f52b2; }
+  button.done { background: #107c10; }
+  .content { padding: 4px 20px 16px; font-size: 14px; line-height: 1.55; overflow-x: auto; }
+  .content table { font-size: 13px; margin: 8px 0; }
+  .content code { background: #f0f0f0; padding: 0 4px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12.5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="intro">
+    <b>วิธีใช้:</b> กด <b>คัดลอก</b> ทีละส่วน แล้ววาง (Ctrl+V) ในแชท / โพสต์ของ Microsoft Teams — ส่วนละ 1 ข้อความ
+    (Teams จำกัดความยาวต่อข้อความประมาณ 28KB; ส่วนที่ยาวเกินจะขึ้นเตือนสีแดง)<br>
+    หรือกด <b>คัดลอกทั้งหมด</b> ถ้าจะวางใน Teams Post / Loop / OneNote ที่รับข้อความยาวได้
+    <div style="margin-top:10px"><button data-copy="all">คัดลอกทั้งหมด</button></div>
+  </div>
+  <div id="all">
+  
+  <section class="sec">
+    <div class="bar"><span><b>หัวเรื่อง</b> <small class="">0.6 KB</small></span><button data-copy="s0">คัดลอก</button></div>
+    <div class="content" id="s0"><h2>Case-Tracking: ภาพรวมระบบ</h2><blockquote style="border-left:3px solid #6264a7;padding-left:10px;color:#555">Demo ออนไลน์: <a href="https://dynamic-manatee-7d2d4b.netlify.app" target="_blank" rel="noopener">https://dynamic-manatee-7d2d4b.netlify.app</a> · เอกสารนี้เปิดอ่านในเว็บได้ที่หน้า <b>📖 Spec</b> (ไม่ต้อง login)<br>เอกสารเทคนิคสำหรับทีมพัฒนา: HANDOFF.md · ประวัติการแก้ไข: CHANGELOG.md</blockquote><hr></div>
+  </section>
+  <section class="sec">
+    <div class="bar"><span><b>1. ทำไมถึงสร้าง web นี้</b> <small class="">2.3 KB</small></span><button data-copy="s1">คัดลอก</button></div>
+    <div class="content" id="s1"><h3>1. ทำไมถึงสร้าง web นี้</h3><h4>ผู้เกี่ยวข้อง</h4><ul><li><b>A</b> — บริษัทผู้พัฒนาโปรแกรม (ทีม Support/CX, Product, Dev, Tester, Publish)</li><li><b>C</b> — ลูกค้าผู้ใช้โปรแกรม มีหลายบริษัท (C_1, C_2, C_3 …) แต่ละบริษัทมี web ของตัวเอง <b>1 domain</b> และแต่ละ domain ใช้โปรแกรมของ A <b>คนละเวอร์ชัน</b></li></ul><h4>ปัญหา (จาก Design Thinking)</h4><p>ลูกค้าแจ้งบัคเข้ามาแล้ว <b>ไม่รู้เลยว่าปัญหาได้รับการแก้ไขหรือยัง แก้ถึงไหนแล้ว</b> บางเคสเงียบหายเป็นเดือน ทำให้ลูกค้าต้องโทรตาม ไม่มั่นใจ และไปบ่นต่อกับผู้บริหาร ขณะที่ฝั่ง A เองก็ไม่มีภาพรวมว่าเคสไหนค้างอยู่ที่ใคร เจ้าไหนแจ้งเยอะ หรือเวอร์ชันไหนมีปัญหา</p><h4>Flow การทำงานจริงของ A</h4><ol><li>ลูกค้าแจ้งปัญหาเข้ามาที่ <b>Support (CX)</b></li><li>Support ตรวจสอบ ถ้าแก้ได้ → แก้ให้ลูกค้าทันที</li><li>ถ้าไม่แน่ใจหรือน่าจะเป็นบัค → ส่งให้ <b>Product</b> ตรวจว่าเป็น Bug จริง หรือเป็นการทำงานตาม Spec</li><li>ถ้าเป็น Bug → ส่ง <b>Dev</b> แก้ไข</li><li><b>Tester</b> ทดสอบ — ไม่ผ่านส่งกลับ Dev, ผ่านแล้ว <b>Tester Publish เอง</b> ให้ domain ของลูกค้า (แต่ละบริษัทแยกกัน)</li><li><b>ลูกค้า</b> ตรวจสอบและกดยืนยันปิดเคสเอง พร้อมให้คะแนน</li></ol><hr></div>
+  </section>
+  <section class="sec">
+    <div class="bar"><span><b>2. ระบบช่วยเรื่องอะไรได้บ้าง</b> <small class="">4.5 KB</small></span><button data-copy="s2">คัดลอก</button></div>
+    <div class="content" id="s2"><h3>2. ระบบช่วยเรื่องอะไรได้บ้าง</h3><div class="md-table"><table border="1" cellpadding="6" style="border-collapse:collapse">
+        <thead><tr><th style="background:#eef0f8;text-align:left">Idea จากทีม</th><th style="background:#eef0f8;text-align:left">ระบบช่วยอย่างไร</th></tr></thead>
+        <tbody><tr><td><b>#1</b> ติดตามการ์ดได้เหมือนติดตามพัสดุ</td><td>ทุกเคสมีเลข (CS-xxxx) และแถบความคืบหน้า 6 ขั้น — บอกว่า "ตอนนี้อยู่ที่ใคร" และ "ขั้นตอนถัดไป" พร้อมประวัติทุกการเปลี่ยนแปลง</td></tr><tr><td><b>#2</b> Dashboard สรุปการ์ดที่แจ้งมา / ที่ยังค้าง</td><td>หน้า Dashboard (หน้าแรก) — ลูกค้าเห็นสรุปของบริษัทตัวเอง, ทีมงานเห็นทุกบริษัท: เจ้าไหนแจ้งเยอะ, ค้างที่ไหน, เวอร์ชันไหนมีปัญหา, ความพึงพอใจ</td></tr><tr><td><b>#3</b> แจ้งประมาณการเสร็จ ลดความคาดหวังลอยๆ</td><td>ยืนยัน Bug ต้องระบุ ETA, ส่ง Publish ต้องระบุวันที่และเวอร์ชัน, เลื่อนวันต้องบอกเหตุผลให้ลูกค้าเห็น, เลยกำหนดขึ้นป้ายเตือน</td></tr><tr><td><b>#4</b> ใครกันที่คุยกับฉันอยู่ ไม่อยากคุยกับโรบอท</td><td>ลูกค้าเห็นชื่อผู้ประสานงาน Support คนเดิมตลอดเคส + ช่องทางติดต่อ, ทุกข้อความแสดงชื่อคนและทีม, ต้องกด "รับเคส" เพื่อระบุผู้รับผิดชอบ</td></tr><tr><td><b>#5</b> เคสนิ่งเกินวันต้องเตือนทีม</td><td>กฎยกระดับ 2 ระดับ (ดูข้อ 4), 🔔 กระดิ่งแจ้งเตือน, CX กด "ทวงถาม" ทีมอื่นได้, ลูกค้ากด "สอบถามความคืบหน้า" ได้ตลอด</td></tr><tr><td><b>#6</b> ระบบล่ม มีประกาศแจ้งไว้ก่อน ลดการปะทะ</td><td>Admin สร้างประกาศ → แถบประกาศขึ้นทุกหน้า (รวมหน้า Login), ตอนลูกค้าจะแจ้งเคสใหม่ระบบเตือนว่า "ทีมทราบแล้ว ไม่ต้องแจ้งเพิ่ม"</td></tr><tr><td><b>#7</b> สรุปเคสรายสัปดาห์ระดับบริษัท ส่งผู้บริหาร</td><td>หน้าสรุปรายสัปดาห์ — อีเมลสรุปต่อบริษัททุกวันจันทร์ 09:00: แจ้งใหม่, ปิดแล้ว, ยังค้างที่ไหน, กำหนดการ, เคสที่รอลูกค้า, ความพึงพอใจ</td></tr><tr><td><b>#8</b> เคสจบที่ลูกค้า + ประเมิน + แจ้งว่าต้อง Publish</td><td>เคสไม่ปิดเมื่อทีมทดสอบผ่าน แต่รอลูกค้ากดยืนยันพร้อมให้ดาว 1–5, มีสถานะ "รอ Publish" บอกว่าจะได้เวอร์ชันไหน วันไหน</td></tr></tbody>
+      </table></div><blockquote style="border-left:3px solid #6264a7;padding-left:10px;color:#555"><b>ข้อจำกัดของ demo:</b> ข้อมูลเก็บใน browser ของแต่ละคน และการแจ้งเตือน / อีเมลรายสัปดาห์ยังเป็นแบบในเว็บ / จำลอง — ระบบจริงต้องมี backend (ดู HANDOFF.md ข้อ 7)</blockquote><hr></div>
+  </section>
+  <section class="sec">
+    <div class="bar"><span><b>3. สถานะของเคส</b> <small class="">16.0 KB</small></span><button data-copy="s3">คัดลอก</button></div>
+    <div class="content" id="s3"><h3>3. สถานะของเคส</h3><h4>ภาพรวม flow</h4><pre style="font-family:Consolas,monospace;font-size:12px;background:#f4f4f4;padding:8px;white-space:pre">ลูกค้าแจ้ง → 📥 แจ้งเข้ามาใหม่ → 🎧 Support ตรวจสอบ ─┬─ แก้ได้เลย ──────────────────────────────┐
+                                                      └→ 🧭 Product ตรวจสอบ ─┬─ เป็นไปตาม Spec ────┤
+                                                                            └→ 🐞 ยืนยัน Bug        │
+                                                                               → 🛠️ Dev กำลังแก้ไข  │
+                                                                               ⇄ 🔍 Tester ทดสอบ     │
+                                                                               → 🚀 รอ Publish       │
+                                                                                                     ↓
+                                                        ✅ แก้ไขแล้ว · รอลูกค้ายืนยัน → 🔒 ปิดเคส
+ระหว่างทาง Support / Product / Dev / Tester ขอข้อมูลเพิ่มได้ → ⏳ รอข้อมูลจากลูกค้า → ตอบแล้วกลับขั้นเดิม</pre><h4>รายละเอียดแต่ละสถานะ</h4><div class="md-table"><table border="1" cellpadding="6" style="border-collapse:collapse">
+        <thead><tr><th style="background:#eef0f8;text-align:left">สถานะ</th><th style="background:#eef0f8;text-align:left">ความหมาย</th><th style="background:#eef0f8;text-align:left">ลูกค้าเห็นว่า</th><th style="background:#eef0f8;text-align:left">เคสอยู่ที่ (ผู้รับผิดชอบ)</th><th style="background:#eef0f8;text-align:left">SLA</th></tr></thead>
+        <tbody><tr><td>📥 <b>แจ้งเข้ามาใหม่</b></td><td>ลูกค้าแจ้งปัญหาเข้ามา รอ Support รับเรื่อง</td><td>รับเรื่องแล้ว</td><td>Support</td><td>4 ชม.</td></tr><tr><td>🎧 <b>Support ตรวจสอบ</b></td><td>Support ตรวจสอบ / ทำซ้ำปัญหา ถ้าแก้ได้จะแก้ให้ทันที</td><td>กำลังตรวจสอบ</td><td>Support</td><td>2 วัน</td></tr><tr><td>⏳ <b>รอข้อมูลจากลูกค้า</b></td><td>ต้องการข้อมูลเพิ่ม (ภาพหน้าจอ, ขั้นตอน) — SLA ของทีมหยุดนับ</td><td>รอข้อมูลจากคุณ</td><td>ลูกค้า</td><td>3 วัน</td></tr><tr><td>🧭 <b>Product ตรวจสอบ</b></td><td>ตรวจกับ spec ว่าเป็น Bug จริง หรือเป็นการทำงานตามที่ออกแบบ</td><td>ผู้เชี่ยวชาญตรวจสอบ</td><td>Product</td><td>3 วัน</td></tr><tr><td>🐞 <b>ยืนยัน Bug · รอคิวแก้</b></td><td>ยืนยันแล้วว่าเป็น Bug มีกำหนดแก้ไข (ETA)</td><td>ยืนยันปัญหา · รอคิวแก้</td><td>Dev</td><td>5 วัน</td></tr><tr><td>🛠️ <b>Dev กำลังแก้ไข</b></td><td>Dev แก้ไข Bug</td><td>กำลังแก้ไข</td><td>Dev</td><td>5 วัน</td></tr><tr><td>🔍 <b>Tester ทดสอบ</b></td><td>Tester รับต่อจาก Dev ทดสอบผลการแก้ไข</td><td>กำลังทดสอบ</td><td>Tester</td><td>2 วัน</td></tr><tr><td>🚀 <b>รอ Publish</b></td><td>ทดสอบผ่านแล้ว รอ Publish เวอร์ชันใหม่ให้ domain ของลูกค้า</td><td>รอ Publish เวอร์ชันใหม่</td><td>Tester</td><td>3 วัน</td></tr><tr><td>✅ <b>แก้ไขแล้ว · รอยืนยัน</b></td><td>แจ้งผลให้ลูกค้าแล้ว รอลูกค้าตรวจและยืนยัน</td><td>แก้ไขแล้ว · รอคุณยืนยัน</td><td>ลูกค้า</td><td>7 วัน</td></tr><tr><td>🔒 <b>ปิดเคส</b></td><td>จบเคส</td><td>ปิดเคส</td><td>—</td><td>—</td></tr></tbody>
+      </table></div><h4>ใคร action กับแต่ละสถานะได้บ้าง</h4><p>🛡️ <b>Admin ทำได้ทุก action ในทุกสถานะ</b> (ไม่ได้เขียนซ้ำในตาราง)</p><div class="md-table"><table border="1" cellpadding="6" style="border-collapse:collapse">
+        <thead><tr><th style="background:#eef0f8;text-align:left">สถานะ</th><th style="background:#eef0f8;text-align:left">Action (→ สถานะถัดไป)</th><th style="background:#eef0f8;text-align:left">ใครทำได้</th><th style="background:#eef0f8;text-align:left">ต้องกรอก</th></tr></thead>
+        <tbody><tr><td>📥 แจ้งเข้ามาใหม่</td><td>รับเรื่อง → Support ตรวจสอบ</td><td>🎧 Support</td><td>—</td></tr><tr><td></td><td>ยกเลิกเคส → ปิดเคส</td><td>👤 ลูกค้า</td><td>เหตุผล</td></tr><tr><td>🎧 Support ตรวจสอบ</td><td>แก้ไขให้ลูกค้าแล้ว → แก้ไขแล้ว · รอยืนยัน</td><td>🎧 Support</td><td>วิธีแก้ / คำแนะนำ (ลูกค้าเห็น)</td></tr><tr><td></td><td>ส่งต่อทีม Product → Product ตรวจสอบ</td><td>🎧 Support</td><td>สรุปปัญหา (ภายใน)</td></tr><tr><td></td><td>ขอข้อมูลเพิ่มจากลูกค้า → รอข้อมูลจากลูกค้า</td><td>🎧 Support</td><td>สิ่งที่ต้องการ</td></tr><tr><td></td><td>ยกเลิกเคส → ปิดเคส</td><td>👤 ลูกค้า</td><td>เหตุผล</td></tr><tr><td>⏳ รอข้อมูลจากลูกค้า</td><td>ส่งข้อมูลเพิ่มเติม → กลับสถานะเดิมอัตโนมัติ</td><td>👤 ลูกค้า</td><td>ข้อมูลเพิ่มเติม</td></tr><tr><td></td><td>ยกเลิกเคส → ปิดเคส</td><td>👤 ลูกค้า</td><td>เหตุผล</td></tr><tr><td>🧭 Product ตรวจสอบ</td><td>ยืนยันเป็น Bug → ยืนยัน Bug · รอคิวแก้</td><td>🧭 Product</td><td><b>ETA</b></td></tr><tr><td></td><td>เป็นไปตาม Spec → แก้ไขแล้ว · รอยืนยัน</td><td>🧭 Product</td><td>คำอธิบายให้ลูกค้า</td></tr><tr><td></td><td>ส่งกลับ Support → Support ตรวจสอบ</td><td>🧭 Product</td><td>เหตุผล (ภายใน)</td></tr><tr><td></td><td>ขอข้อมูลเพิ่มจากลูกค้า → รอข้อมูลจากลูกค้า</td><td>🧭 Product</td><td>สิ่งที่ต้องการ</td></tr><tr><td>🐞 ยืนยัน Bug · รอคิวแก้</td><td>เริ่มแก้ไข → Dev กำลังแก้ไข</td><td>💻 Dev</td><td>—</td></tr><tr><td>🛠️ Dev กำลังแก้ไข</td><td>แก้เสร็จ · ส่ง Tester → Tester ทดสอบ</td><td>💻 Dev</td><td>—</td></tr><tr><td></td><td>ขอข้อมูลเพิ่มจากลูกค้า → รอข้อมูลจากลูกค้า</td><td>💻 Dev</td><td>สิ่งที่ต้องการ</td></tr><tr><td>🔍 Tester ทดสอบ</td><td>ทดสอบผ่าน · กำหนดวัน Publish → รอ Publish</td><td>🧪 Tester</td><td><b>Version + วัน Publish</b></td></tr><tr><td></td><td>ทดสอบไม่ผ่าน · ส่งกลับ Dev → Dev กำลังแก้ไข</td><td>🧪 Tester</td><td>สิ่งที่ไม่ผ่าน (ภายใน)</td></tr><tr><td></td><td>ขอข้อมูลเพิ่มจากลูกค้า → รอข้อมูลจากลูกค้า</td><td>🧪 Tester</td><td>สิ่งที่ต้องการ</td></tr><tr><td>🚀 รอ Publish</td><td>Publish แล้ว · แจ้งลูกค้า → แก้ไขแล้ว · รอยืนยัน</td><td>🧪 Tester</td><td>สิ่งที่แก้ / วิธีตรวจสอบ (อัปเดตเวอร์ชันของ domain)</td></tr><tr><td>✅ แก้ไขแล้ว · รอยืนยัน</td><td>ยืนยัน ปัญหาได้รับการแก้ไข → ปิดเคส</td><td>👤 ลูกค้า</td><td><b>คะแนน 1–5 ดาว</b></td></tr><tr><td></td><td>ยังไม่ได้รับการแก้ไข → Support ตรวจสอบ</td><td>👤 ลูกค้า</td><td>อาการที่ยังพบ</td></tr><tr><td></td><td>ปิดเคส (ลูกค้าไม่ตอบ 7 วัน) → ปิดเคส</td><td>🎧 Support</td><td>—</td></tr><tr><td>🔒 ปิดเคส</td><td>—</td><td>—</td><td>—</td></tr></tbody>
+      </table></div><h4>Action ที่ไม่เปลี่ยนสถานะ (กันเคสนิ่ง / ปรับกำหนดการ)</h4><div class="md-table"><table border="1" cellpadding="6" style="border-collapse:collapse">
+        <thead><tr><th style="background:#eef0f8;text-align:left">Action</th><th style="background:#eef0f8;text-align:left">ใช้ได้ตอน</th><th style="background:#eef0f8;text-align:left">ใครทำได้</th><th style="background:#eef0f8;text-align:left">ลูกค้าเห็นไหม</th></tr></thead>
+        <tbody><tr><td>✋ <b>รับเคสนี้</b></td><td>เคสอยู่ที่ทีมของตัวเอง</td><td>ทีมที่ถือเคสอยู่ (Support / Product / Dev / Tester)</td><td>เห็นชื่อคนดูแล</td></tr><tr><td>🔔 <b>ทวงถามทีมที่รับผิดชอบ</b></td><td>เคสอยู่ที่ Product / Dev / Tester</td><td>🎧 Support (CX)</td><td>ไม่เห็น (ภายใน)</td></tr><tr><td>🙋 <b>สอบถามความคืบหน้า</b></td><td>เคสอยู่ที่ทีมงาน (ไม่จำกัดจำนวนครั้ง)</td><td>👤 ลูกค้า</td><td>เห็น → แจ้งเตือนไปที่ Support</td></tr><tr><td>📅 <b>ปรับกำหนดแก้ไข (ETA)</b></td><td>ยืนยัน Bug / Dev แก้ไข / Tester ทดสอบ</td><td>🧭 Product, 💻 Dev, 🧪 Tester</td><td>เห็น + เหตุผล</td></tr><tr><td>📅 <b>ปรับวัน Publish</b></td><td>รอ Publish</td><td>🧪 Tester</td><td>เห็น + เหตุผล</td></tr><tr><td>💬 <b>ความคิดเห็น</b></td><td>ทุกสถานะที่ยังไม่ปิด</td><td>ทุก role (ทีมงานเลือก "บันทึกภายใน" ได้) · แก้ไขข้อความของตัวเองได้ (ขึ้น "แก้ไขแล้ว")</td><td>เห็น ยกเว้นบันทึกภายใน</td></tr></tbody>
+      </table></div><hr><h4>🗂️ งานที่ค้างอยู่ที่คุณ (บน Dashboard)</h4><p>Board บนสุดของหน้า Dashboard แสดงเคสที่ค้างอยู่ที่คนที่ login — สถานะปัจจุบันเสมอ (ไม่ขึ้นกับช่วงเวลา) เรียงเคสเร่งด่วนก่อน (ยกระดับ / เกิน SLA) คลิกการ์ดเพื่อเปิดเคส</p><div class="md-table"><table border="1" cellpadding="6" style="border-collapse:collapse">
+        <thead><tr><th style="background:#eef0f8;text-align:left">บทบาท</th><th style="background:#eef0f8;text-align:left">คอลัมน์</th></tr></thead>
+        <tbody><tr><td>🎧 Support · 🧭 Product · 💻 Dev · 🧪 Tester</td><td>✋ ยังไม่มีคนรับ (ในทีม) · 👤 มอบให้คุณ · 👥 คนอื่นในทีม (ติ๊กแสดงได้)</td></tr><tr><td>👤 ลูกค้า</td><td>⏳ รอข้อมูลจากคุณ · ✅ รอคุณยืนยันผล · 📂 ทีมกำลังดำเนินการ (ติ๊กแสดงได้)</td></tr><tr><td>🛡️ Admin</td><td>🚨 ยกระดับ 2 · ⚠️ ยกระดับ 1 · ✋ ยังไม่มีคนรับ</td></tr></tbody>
+      </table></div><ul><li>สลับการแสดงผลได้ <b>▦ การ์ด</b> (คอลัมน์) หรือ <b>☰ List</b> (ตาราง มีคอลัมน์ "กลุ่ม") — ระบบจำรูปแบบที่เลือกไว้</li><li>การ์ด / แถวแสดงป้าย 🔔 ถูกทวงถาม, ยกระดับ, ยังไม่มีคนรับ, ETA / วัน Publish และ SLA</li><li><b>💬 ข้อความที่ยังไม่ได้อ่าน:</b> ป้ายสีแดงพร้อมจำนวน บนการ์ด / แถว และสรุปรวมที่หัว Board — นับความคิดเห็น, ข้อมูลที่ลูกค้าส่งกลับ, การสอบถาม / ทวงถาม จากคนอื่น (ไม่นับของตัวเอง, ลูกค้าไม่นับข้อความภายใน) · เปิดหน้าเคส = อ่านแล้ว ข้อความใหม่ในหน้าเคสมีป้าย "ใหม่"</li></ul><h4>การแสดงชื่อผู้รับผิดชอบ</h4><div class="md-table"><table border="1" cellpadding="6" style="border-collapse:collapse">
+        <thead><tr><th style="background:#eef0f8;text-align:left">ผู้ดู</th><th style="background:#eef0f8;text-align:left">"ตอนนี้อยู่ที่" / ผู้รับผิดชอบ</th><th style="background:#eef0f8;text-align:left">การ์ด "ทีม / คนที่ดูแลเคสนี้"</th></tr></thead>
+        <tbody><tr><td>ทีมงาน (ทุก role ที่ไม่ใช่ลูกค้า)</td><td><b>ชื่อคนที่รับเคส</b> (ยังไม่มีคนรับ → ชื่อทีม)</td><td>ชื่อคนของแต่ละทีม</td></tr><tr><td>ลูกค้า</td><td><b>ทีม / บทบาท</b> ที่ดูแลการ์ดอยู่ เช่น 💻 ทีม Dev</td><td>สถานะของแต่ละทีม: ● กำลังดูแล / ✓ ดูแลแล้ว / —</td></tr></tbody>
+      </table></div><p>ลูกค้ายังเห็นชื่อ <b>ผู้ประสานงาน Support</b> ของตัวเอง (IDEA#4 — รู้ว่าคุยกับใคร)</p><hr></div>
+  </section>
+  <section class="sec">
+    <div class="bar"><span><b>4. กฎยกระดับเคสนิ่ง (กันการ์ดไม่มีคน take action)</b> <small class="">1.7 KB</small></span><button data-copy="s4">คัดลอก</button></div>
+    <div class="content" id="s4"><h3>4. กฎยกระดับเคสนิ่ง (กันการ์ดไม่มีคน take action)</h3><div class="md-table"><table border="1" cellpadding="6" style="border-collapse:collapse">
+        <thead><tr><th style="background:#eef0f8;text-align:left">ระดับ</th><th style="background:#eef0f8;text-align:left">เกิดเมื่อ</th><th style="background:#eef0f8;text-align:left">แจ้งเตือนถึง</th></tr></thead>
+        <tbody><tr><td>⚠️ <b>ระดับ 1</b></td><td>ยังไม่มีคนรับเคสเกิน 2 ชม. · ผู้ถือเคสไม่มีความเคลื่อนไหวเกิน 1 วัน · เกิน SLA</td><td>ทีมที่ถือเคส + CX (Support)</td></tr><tr><td>🚨 <b>ระดับ 2</b></td><td>ไม่มีความเคลื่อนไหวเกิน 2 วัน · เกิน SLA 2 เท่า</td><td>+ หัวหน้าทีมที่ถือเคส + Admin</td></tr></tbody>
+      </table></div><ul><li>นับ "ความเคลื่อนไหว" เฉพาะจากผู้ถือเคส (เปลี่ยนสถานะ, รับเคส, ตอบข้อความ) — การทวงถามจากคนอื่นไม่นับ</li><li>ปลดการยกระดับได้ด้วยการกด "รับเคส" หรือดำเนินการต่อ</li><li>CX (Support) เห็นเคสยกระดับของทุกทีม เพราะเป็นผู้ประสานงานกับลูกค้า</li></ul><hr></div>
+  </section>
+  <section class="sec">
+    <div class="bar"><span><b>5. สิ่งที่แต่ละ Role ทำได้</b> <small class="">6.1 KB</small></span><button data-copy="s5">คัดลอก</button></div>
+    <div class="content" id="s5"><h3>5. สิ่งที่แต่ละ Role ทำได้</h3><h4>👤 ลูกค้า (C)</h4><ul><li>Login โดยเลือกบริษัทของตัวเอง — <b>เห็นเฉพาะข้อมูลของบริษัทตัวเอง</b></li><li><b>แจ้งปัญหาใหม่</b> — ระบบแนบ domain และเวอร์ชันโปรแกรมให้อัตโนมัติ</li><li><b>ติดตามเคส</b> — ความคืบหน้า 6 ขั้น, ตอนนี้อยู่ที่ทีมไหน/ใคร, ขั้นถัดไป, ETA / วัน Publish, ประวัติ (ไม่เห็นข้อความภายในของทีม)</li><li><b>ตอบกลับ</b> เมื่อถูกขอข้อมูลเพิ่ม, <b>สอบถามความคืบหน้า</b> และ <b>แสดงความคิดเห็น</b> ได้ไม่จำกัด</li><li><b>ยืนยันปิดเคส + ให้คะแนน 1–5 ดาว</b> หรือ <b>แจ้งว่ายังไม่หาย</b> (เคสกลับไป Support)</li><li><b>ยกเลิกเคส</b> ได้ตอนแจ้งใหม่ / Support ตรวจสอบ / รอข้อมูล</li><li>ดู <b>Dashboard</b> และ <b>สรุปรายสัปดาห์</b> ของบริษัทตัวเอง, ตั้งรายชื่อผู้บริหารที่รับอีเมลสรุป</li><li>เห็น <b>ประกาศเหตุขัดข้อง</b> ที่กระทบบริษัทตัวเอง</li></ul><h4>🎧 Support (CX)</h4><ul><li><b>รับเรื่อง</b> เคสใหม่, <b>แก้ไขให้ลูกค้าเอง</b> ถ้าทำได้</li><li><b>ส่งต่อ Product</b> เมื่อไม่แน่ใจหรือน่าจะเป็นบัค</li><li><b>ขอข้อมูลเพิ่ม</b> จากลูกค้า</li><li><b>ทวงถาม</b> ทีม Product / Dev / Tester / Publish เมื่อเคสนิ่ง — เป็นผู้ประสานงานหลักกับลูกค้าตลอดเคส</li><li><b>ปิดเคส</b> เมื่อลูกค้าไม่ตอบกลับ 7 วัน</li><li>แจ้งเคสแทนลูกค้าได้ (เช่น ลูกค้าโทรมา) โดยเลือกบริษัทและช่องทาง</li><li>เห็นเคสทุกบริษัท (Board / List), Dashboard ทุก domain, ได้รับแจ้งเตือนเคสยกระดับของทุกทีม</li><li>ตั้งค่าสรุปรายสัปดาห์ (ผู้รับ, เปิด/ปิดส่งอัตโนมัติ)</li></ul><h4>🧭 Product</h4><ul><li>ตรวจเคสที่ Support ส่งมา แล้วตัดสิน: <b>ยืนยันเป็น Bug</b> (ต้องใส่ ETA) · <b>เป็นไปตาม Spec</b> (อธิบายให้ลูกค้า) · <b>ส่งกลับ Support</b></li><li><b>ขอข้อมูลเพิ่ม</b> จากลูกค้า, <b>ปรับ ETA</b> พร้อมเหตุผล</li><li>รับเคส / แสดงความคิดเห็น / บันทึกภายใน</li></ul><h4>💻 Developer</h4><ul><li><b>เริ่มแก้ไข</b> เคสที่ยืนยัน Bug แล้ว → <b>แก้เสร็จส่ง Tester</b></li><li><b>ขอข้อมูลเพิ่ม</b> จากลูกค้า, <b>ปรับ ETA</b> พร้อมเหตุผล</li><li>รับเคส / แสดงความคิดเห็น / บันทึกภายใน</li></ul><h4>🧪 Tester</h4><ul><li><b>รับงานต่อจาก Dev</b> แล้วทดสอบ</li><li><b>ทดสอบไม่ผ่าน → ส่งกลับ Dev</b> (ระบุสิ่งที่ไม่ผ่าน)</li><li><b>ทดสอบผ่าน → กำหนดวัน Publish</b> (ระบุ version และวันที่จะ Publish)</li><li><b>ขอข้อมูลเพิ่ม</b> จากลูกค้า, <b>ปรับ ETA</b></li><li><b>Publish เวอร์ชันใหม่ให้ domain ของลูกค้า</b> (แต่ละบริษัทแยกกัน) แล้วแจ้งลูกค้าให้ตรวจสอบ — เวอร์ชันของ domain นั้นอัปเดตอัตโนมัติ</li><li><b>ปรับวัน Publish</b> พร้อมเหตุผลที่ลูกค้าเห็น</li><li>รับเคส / แสดงความคิดเห็น / บันทึกภายใน</li></ul><h4>🛡️ Admin</h4><ul><li><b>ทำได้ทุก action ในทุกสถานะ</b></li><li><b>สร้าง / อัปเดต / ปิดประกาศเหตุขัดข้อง</b> เลือกได้ว่ากระทบทุกบริษัทหรือบางบริษัท</li><li>เข้าหน้า <b>Admin Spec</b> (บันทึก spec และ flow ของแต่ละหน้าในเว็บ)</li><li>ได้รับแจ้งเตือนเคสที่ยกระดับถึงระดับ 2</li><li>(demo: login ด้วยชื่อ <code>admin</code>)</li></ul><h4>ทุก role ที่เป็นทีมงาน</h4><ul><li>เห็นเคสทุกบริษัท, Dashboard เปรียบเทียบทุก domain, หน้า Workflow &amp; สิทธิ์</li><li>🔔 กระดิ่งแจ้งเตือนเรื่องที่รอตัวเอง (เคสยกระดับ, ยังไม่มีคนรับ, ถูกทวงถาม)</li></ul><hr></div>
+  </section>
+  <section class="sec">
+    <div class="bar"><span><b>6. หน้าในระบบ</b> <small class="">2.1 KB</small></span><button data-copy="s6">คัดลอก</button></div>
+    <div class="content" id="s6"><h3>6. หน้าในระบบ</h3><div class="md-table"><table border="1" cellpadding="6" style="border-collapse:collapse">
+        <thead><tr><th style="background:#eef0f8;text-align:left">หน้า</th><th style="background:#eef0f8;text-align:left">ใช้ทำอะไร</th><th style="background:#eef0f8;text-align:left">ใครเข้าได้</th></tr></thead>
+        <tbody><tr><td>Login</td><td>เข้าระบบ เลือกบทบาท (+ บริษัท)</td><td>ทุกคน</td></tr><tr><td>📖 Spec</td><td>เอกสารนี้ในเว็บ — ที่มา, สถานะ, สิทธิ์แต่ละ role</td><td>ทุกคน (ไม่ต้อง login)</td></tr><tr><td>📊 Dashboard</td><td>หน้าแรก — <b>🗂️ งานที่ค้างอยู่ที่คุณ</b> (Board ตามบทบาท) + ภาพรวมเคสรายบริษัท / domain / เวอร์ชัน</td><td>ทุก role</td></tr><tr><td>Case Tracking</td><td>รายการเคส (Board / List / การ์ดของลูกค้า), แจ้งปัญหาใหม่</td><td>ทุก role</td></tr><tr><td>รายละเอียดเคส</td><td>ความคืบหน้า, ปุ่ม action ตามสิทธิ์, ประวัติ, ผู้ติดต่อ</td><td>ทุก role</td></tr><tr><td>📨 สรุปรายสัปดาห์</td><td>ตัวอย่างอีเมลสรุปถึงผู้บริหาร, ผู้รับ, ประวัติการส่ง</td><td>ทุก role</td></tr><tr><td>Workflow &amp; สิทธิ์</td><td>แผนภาพ flow, ตารางสถานะ, ตารางสิทธิ์, กฎยกระดับ</td><td>ทุก role</td></tr><tr><td>📢 ประกาศ</td><td>จัดการประกาศเหตุขัดข้อง</td><td>Admin</td></tr><tr><td>Admin Spec</td><td>บันทึก spec และ flow ของทุกหน้า</td><td>Admin</td></tr></tbody>
+      </table></div></div>
+  </section>
+  </div>
+</div>
+<script>
+  // คัดลอกแบบ rich text (เก็บตาราง / ตัวหนา) — ใช้ selection + execCommand เพราะเปิดจากไฟล์ในเครื่องได้
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-copy]");
+    if (!b) return;
+    const el = document.getElementById(b.dataset.copy);
+    const range = document.createRange();
+    range.selectNodeContents(el);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (err) {}
+    sel.removeAllRanges();
+    const label = b.textContent;
+    b.textContent = ok ? "✓ คัดลอกแล้ว — วางใน Teams ได้เลย" : "คัดลอกไม่สำเร็จ ลองเลือกข้อความแล้วกด Ctrl+C";
+    b.classList.toggle("done", ok);
+    setTimeout(() => { b.textContent = label; b.classList.remove("done"); }, 2500);
+  });
+</script>
+</body>
+</html>
